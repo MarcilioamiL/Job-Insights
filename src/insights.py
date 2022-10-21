@@ -27,7 +27,7 @@ def get_unique_industries(path):
 
 def filter_by_industry(jobs, industry):
     """Filters a list of jobs by industry, list comprehension"""
-    return []
+    return [dado for dado in jobs if dado["industry"] == industry]
 
 
 def get_max_salary(path):
