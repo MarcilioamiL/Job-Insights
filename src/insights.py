@@ -31,21 +31,12 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    """Get the maximum salary of all jobs, the method return true or false"""
+    max_salary_set = set()
+    for dado_salary in read(path):
+        if dado_salary['max_salary'].isdigit():
+            max_salary_set.add(int(dado_salary["max_salary"]))
+    return max(max_salary_set)
 
 
 def get_min_salary(path):
