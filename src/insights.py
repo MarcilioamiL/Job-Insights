@@ -48,30 +48,24 @@ def get_min_salary(path):
     return min(min_salary_set)
 
 
+def get_salary_f_complex(j, s):
+    if int(j["min_salary"] > j["max_salary"]):
+        raise ValueError
+    elif type(s) != int:
+        raise ValueError
+    return j["min_salary"] <= s < j["max_salary"]
+
+
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
+    no complexity error"""
+    try:
+        return get_salary_f_complex(job, salary)
+    except KeyError:
+        raise ValueError
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
-
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    except TypeError:
+        raise ValueError
 
 
 def filter_by_salary_range(jobs, salary):
